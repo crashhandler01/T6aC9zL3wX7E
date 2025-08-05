@@ -32,7 +32,6 @@ local sections = {
 	VisualSection1 = tabs.Tab2:AddSection("Humans", 1),
 	VisualSection2 = tabs.Tab2:AddSection("Inventory Viewer", 2),
 	VisualSection3 = tabs.Tab2:AddSection("Vehicle ESP", 3),
-    VisualSection4 = tabs.Tab2:AddSection("Gun Scanner", 1),
     VisualSection5 = tabs.Tab2:AddSection("Graves", 1),
 
 }
@@ -761,37 +760,6 @@ local function scanWeapons()
         notify("No players have the selected weapon")
     end
 end
-
-sections.VisualSection4:AddToggle({
-    text = "Gun Scanner",
-    flag = "gun_scanner_enabled",
-    state = false,
-    callback = function(state)
-        gunScannerEnabled = state
-        if state then
-            scanWeapons()
-        end
-    end
-})
-
-sections.VisualSection4:AddList({
-    enabled = true,
-    text = "Select Weapon",
-    flag = "gun_scanner_weapon",
-    multi = false,
-    tooltip = "Select a weapon",
-    risky = false,
-    dragging = false,
-    focused = false,
-    value = weaponList[1],
-    values = weaponList,
-    callback = function(selected)
-        selectedWeapons = { selected }
-        if gunScannerEnabled then
-            scanWeapons()
-        end
-    end
-})
 
 local RunService = game:GetService("RunService")
 local camera = workspace.CurrentCamera
