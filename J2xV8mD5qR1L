@@ -23,7 +23,7 @@ local tabs = {
 
 local sections = {
 	Section1 = tabs.Tab1:AddSection("Aimbot", 1),
-	Section2 = tabs.Tab1:AddSection("Aimbot FOV", 1),
+	Section3 = tabs.Tab1:AddSection("Aimbot FOV", 1),
 
 
 	VisualSection1 = tabs.Tab2:AddSection("Players", 1),
@@ -80,7 +80,7 @@ sections.Section1:AddToggle({
 	end
 })
 
-sections.Section2:AddToggle({
+sections.Section3:AddToggle({
 	enabled = true,
 	text = "Show FOV Circle",
 	flag = "show_fov",
@@ -91,7 +91,7 @@ sections.Section2:AddToggle({
 	end
 })
 
-sections.Section2:AddSlider({
+sections.Section3:AddSlider({
 	text = "FOV Radius", 
 	flag = 'fov_radius', 
 	value = 200, 
@@ -106,7 +106,7 @@ sections.Section2:AddSlider({
 	end
 })
 
-sections.Section2:AddSlider({
+sections.Section3:AddSlider({
 	text = "FOV Outline Thickness", 
 	flag = 'fov_thickness', 
 	value = 2, 
