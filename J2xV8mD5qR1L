@@ -32,7 +32,6 @@ local sections = {
 	VisualSection1 = tabs.Tab2:AddSection("Humans", 1),
 	VisualSection2 = tabs.Tab2:AddSection("Inventory Viewer", 2),
 	VisualSection3 = tabs.Tab2:AddSection("Vehicle ESP", 3),
-    VisualSection5 = tabs.Tab2:AddSection("Graves", 1),
 
 }
 
@@ -831,71 +830,6 @@ RunService.RenderStepped:Connect(function()
         end
     end
 end)
-
-sections.VisualSection5:AddToggle({
-    text = "Show Graves",
-    flag = "show_graves",
-    state = false,
-    callback = function(state)
-        showGraves = state
-        for _, v in pairs(graveESP) do
-            v.text.Visible = state
-        end
-    end
-})
-
-sections.VisualSection5:AddToggle({
-    text = "Grave Outlines",
-    flag = "grave_outlines",
-    state = false,
-    callback = function(state)
-        showOutlines = state
-        for _, v in pairs(graveESP) do
-            v.text.Outline = state
-        end
-    end
-})
-
-sections.VisualSection5:AddToggle({
-    text = "Grave Distance",
-    flag = "grave_distance",
-    state = false,
-    callback = function(state)
-        showDistance = state
-    end
-})
-
-sections.VisualSection5:AddSlider({
-    text = "Grave Size",
-    flag = "grave_size",
-    value = 14,
-    min = 0,
-    max = 100,
-    increment = 1,
-    tooltip = "Text size of grave ESP",
-    callback = function(val)
-        graveSize = val
-        for _, v in pairs(graveESP) do
-            v.text.Size = val
-        end
-    end
-})
-
-sections.VisualSection5:AddColor({
-    enabled = true,
-    text = "Grave Color",
-    flag = "grave_color",
-    tooltip = "Color of grave ESP text",
-    color = Color3.fromRGB(255, 255, 255),
-    trans = 0,
-    open = false,
-    callback = function(color)
-        graveColor = color
-        for _, v in pairs(graveESP) do
-            v.text.Color = color
-        end
-    end
-})
 
 library:SendNotification("Invictus loaded", 5, Color3.new(1, 0, 0))
 
