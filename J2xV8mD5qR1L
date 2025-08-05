@@ -1,6 +1,6 @@
 getgenv().Config = {
 	Invite = "Invictus",
-	Version = "beta",
+	Version = "ta",
 }
 
 getgenv().luaguardvars = {
