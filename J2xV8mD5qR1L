@@ -23,10 +23,7 @@ local tabs = {
 
 local sections = {
 	Section1 = tabs.Tab1:AddSection("Aimbot", 1),
-	Section3 = tabs.Tab1:AddSection("Carfly", 2),
-	Section4 = tabs.Tab1:AddSection("World", 4),
-    Section5 = tabs.Tab1:AddSection("Hitsound", 2),
-	Section9 = tabs.Tab1:AddSection("FOV CIRCLE", 1),
+	Section9 = tabs.Tab1:AddSection("Aimbot FOV", 1),
 
 
 	VisualSection1 = tabs.Tab2:AddSection("Players", 1),
@@ -94,17 +91,6 @@ sections.Section9:AddToggle({
 	end
 })
 
-sections.Section1:AddToggle({
-	enabled = true,
-	text = "Show Snapline",
-	flag = "show_snapline",
-	tooltip = "Draw snapline to the target",
-	risky = false,
-	callback = function(v)
-	    showSnapline = v
-	end
-})
-
 sections.Section9:AddSlider({
 	text = "FOV Radius", 
 	flag = 'fov_radius', 
@@ -132,20 +118,6 @@ sections.Section9:AddSlider({
 	callback = function(v)
 		fovThickness = v
 		fovCircle.Thickness = v
-	end
-})
-
-sections.Section1:AddSlider({
-	text = "Snapline Thickness", 
-	flag = 'snapline_thickness', 
-	value = 2, 
-	min = 0, 
-	max = 100, 
-	increment = 1,
-	tooltip = "Thickness of the snapline",
-	risky = false,
-	callback = function(v)
-		snaplineThickness = v
 	end
 })
 
@@ -189,62 +161,6 @@ sections.Section1:AddSlider({
 	callback = function(v)
 		predictionYAdjust = v / 100
 	end
-})
-
-sections.Section9:AddColor({
-	enabled = true,
-	text = "FOV Color",
-	flag = "fov_circle_color",
-	tooltip = "Select the color of the FOV circle",
-	color = Color3.fromRGB(255, 255, 255),
-	trans = 0,
-	open = false,
-	callback = function(c)
-		fovColor = c
-		fovCircle.Color = c
-	end
-})
-
-sections.Section9:AddToggle({
-	enabled = true,
-	text = "FOV Rainbow Effect",
-	flag = "fov_rainbow",
-	tooltip = "Enables rainbow FOV coloring",
-	risky = false,
-	callback = function(v)
-		fovRainbow = v
-	end
-})
-
-sections.Section1:AddColor({
-	enabled = true,
-	text = "Snapline Color",
-	flag = "snapline_color",
-	tooltip = "Select the color of the snapline",
-	color = Color3.fromRGB(255, 0, 0),
-	trans = 0,
-	open = false,
-	callback = function(c)
-		snaplineColor = c
-	end
-})
-
-sections.Section1:AddToggle({
-	enabled = true,
-	text = "Snapline Rainbow Effect",
-	flag = "snapline_rainbow",
-	tooltip = "Enables rainbow Snapline coloring",
-	risky = false,
-	callback = function(v)
-		snaplineRainbow = v
-	end
-})
-
-sections.Section1:AddText({
-    enabled = true,
-    text = "Dont Touch KeyBind U will Get Banned",
-    flag = "Text_1",
-    risky = true,
 })
 
 sections.Section1:AddBind({
@@ -401,37 +317,6 @@ RunService.RenderStepped:Connect(function()
 	end
 end)
 
-sections.Section3:AddToggle({
-	text = "Carfly",
-	flag = "carfly_enabled",
-	state = false,
-	callback = function(state)
-		getgenv().carfly_enabled = state
-		if not state and FlyConnection then
-			FlyConnection:Disconnect()
-			FlyConnection = nil
-			StarterGui:SetCore("SendNotification", {
-				Title = "Car Fly OFF",
-				Text = "Fly Disabled!"
-			})
-		end
-	end
-})
-
-sections.Section3:AddBind({
-	text = "Carfly Key",
-	flag = "carfly_key",
-	nomouse = true,
-	noindicator = true,
-	tooltip = "Toggle Carfly",
-	mode = "toggle",
-	bind = Enum.KeyCode.B,
-	keycallback = function(k)
-		getgenv().carfly_key = k
-	end
-})
-
-
 getgenv().carfly_enabled = false
 getgenv().carfly_key = Enum.KeyCode.B
 
@@ -558,65 +443,10 @@ UserInputService.InputBegan:Connect(function(input, processed)
 	end
 end)
 
-sections.Section4:AddToggle({ text = "No Leaves", flag = "no_leaves_enabled", state = false })
-
-task.spawn(function()
-	while true do
-		if library.flags.no_leaves_enabled then
-			for _, v in workspace:GetDescendants() do
-				if v.Name == "Leaves" then
-					v:Destroy()
-				end
-			end
-		end
-		task.wait(3)
-	end
-end)
-
-sections.Section4:AddToggle({ text = "No Grass", flag = "no_grass_enabled", state = false })
-
-task.spawn(function()
-	while true do
-		if library.flags.no_grass_enabled then
-			pcall(function()
-				sethiddenproperty(workspace.Terrain, "Decoration", false)
-			end)
-		end
-		task.wait(3)
-	end
-end)
-
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local LocalPlayer = Players.LocalPlayer
-
-
-sections.Section5:AddToggle({
-    text = "HitSound",
-    flag = "hitsound_enabled",
-    state = false,
-    callback = function(state)
-        getgenv().hitsound_enabled = state
-    end
-})
-
-sections.Section5:AddList({
-    enabled = true,
-    text = "Select HitSound",
-    flag = "hitsound_type",
-    multi = false,
-    tooltip = "Choose a hitsound",
-    value = "Default",
-    values = {
-        "Default", "Gamesense", "CS:GO", "Among Us", "Neverlose",
-        "TF2 Critical", "Mario", "Rust", "Call of Duty", "Steve",
-        "Bamboo", "Minecraft", "TF2"
-    },
-    callback = function(selected)
-        getgenv().selected_hitsound = selected
-    end
-})
 
 local soundIds = {
     ["Default"] = { Hitmarker = "rbxassetid://5764886834", Headshot = "rbxassetid://5764885315" },
