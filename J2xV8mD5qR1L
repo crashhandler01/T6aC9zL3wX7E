@@ -1,17 +1,17 @@
 getgenv().Config = {
-	Invite = "Invictus",
+	Invite = "Ch4dr3y.gg",
 	Version = "1.0",
 }
 
 getgenv().luaguardvars = {
-	DiscordName = "junoes",
+	DiscordName = "chadrey_9",
 }
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/qwedump/A9xT7mQ2ZpL4/refs/heads/main/M8rQ1vW4eC6B"))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ChadreysOfficialScript/Uilibs/refs/heads/main/Chadz/Chadz.lib"))()
 library:init()
 
 local Window = library.NewWindow({
-	title = "Invictus",
+	title = "Ch4dr3y.gg | Aftermath V1",
 	size = UDim2.new(0, 590, 0, 550)
 })
 
@@ -699,7 +699,7 @@ sections.VisualSection1:AddToggle({
 	state = false,
 	callback = function(state)
 		if state then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/qwedump/N8zV4xC1TaR5/refs/heads/main/B6rT1vZ8WpN4"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/ChadreysOfficialScript/Esp/refs/heads/main/Esp"))()
 		end
 	end
 })
@@ -929,7 +929,7 @@ sections.VisualSection5:AddColor({
     end
 })
 
-library:SendNotification("Invictus loaded", 5, Color3.new(1, 0, 0))
+library:SendNotification("Ch4dr3y.xyz loaded", 5, Color3.new(1, 0, 0))
 
 
 local Players = game:GetService("Players")
