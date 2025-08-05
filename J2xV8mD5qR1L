@@ -29,8 +29,7 @@ local sections = {
 	Section9 = tabs.Tab1:AddSection("FOV CIRCLE", 1),
 
 
-	VisualSection1 = tabs.Tab2:AddSection("Humans", 1),
-	VisualSection2 = tabs.Tab2:AddSection("Inventory Viewer", 2),
+	VisualSection1 = tabs.Tab2:AddSection("Players", 1),
 	VisualSection3 = tabs.Tab2:AddSection("Vehicle ESP", 3),
 
 }
@@ -692,7 +691,7 @@ end
 
 
 sections.VisualSection1:AddToggle({
-	text = "Esp(Enabled it Once)",
+	text = "ESP",
 	flag = "esp_enabled",
 	state = false,
 	callback = function(state)
@@ -702,8 +701,6 @@ sections.VisualSection1:AddToggle({
 	end
 })
 
-
-sections.VisualSection2:AddToggle({ text = "Inventory Viewer", flag = "invviewer_enabled", state = false })
 
 sections.VisualSection3:AddToggle({ text = "Vehicle Esp", flag = "vehicle_esp_enabled", state = false })
 sections.VisualSection3:AddSlider({
